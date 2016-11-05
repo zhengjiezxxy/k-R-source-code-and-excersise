@@ -68,7 +68,7 @@ int gettoken(void)  /* return next token */
       strcpy(token, "()");
       return tokentype = PARENS;
     } else {
-      ungetc(c);
+      ungetch(c);
       return tokentype = '(';
     }
   } else if (c == '[') {
@@ -80,7 +80,7 @@ int gettoken(void)  /* return next token */
     for (*p++ = c; isalnum(c = getchar()); )
       *p++ = c;
     *p = '\0';
-    ungetc(c);
+    ungetch(c);
     return tokentype = NAME;
   } else
     return tokentype = c;
